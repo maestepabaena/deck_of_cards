@@ -19,11 +19,11 @@ public class DeckOfCards {
 
   }
 
-  public int getCardsLeft() {
-    return cards.size();
-  }
-
   public PokerCard dealOneCard() {
     return cards.remove(0);
+  }
+
+  public List<PokerCard> getCards() {
+    return cards;
   }
 }

@@ -23,7 +23,7 @@ class DeckOfCardsShould {
     deckOfCards.shuffle();
 
     // then
-    assertThat(deckOfCards.getCardsLeft(), is(52));
+    assertThat(deckOfCards.getCards().size(), is(52));
 
   }
 
@@ -34,7 +34,7 @@ class DeckOfCardsShould {
 
     // then
     assertNotNull(card);
-    assertThat(deckOfCards.getCardsLeft(), is(51));
+    assertThat(deckOfCards.getCards().size(), is(51));
 
   }
 
@@ -47,7 +47,7 @@ class DeckOfCardsShould {
     // then
     assertNotNull(firstCard);
     assertNotNull(secondCard);
-    assertThat(deckOfCards.getCardsLeft(), is(50));
+    assertThat(deckOfCards.getCards().size(), is(50));
     assertThat(firstCard).isNotEqualTo(secondCard);
 
   }
