@@ -9,8 +9,9 @@ public class DeckOfCards {
 
   public DeckOfCards() {
     this.cards = new ArrayList<>();
-    for (int i=0; i<52; i++){
-      cards.add(new PokerCard("Hearts","Ace"));
+    cards.add(new PokerCard("Hearts","Ace"));
+    for (int i=1; i<52; i++){
+      cards.add(new PokerCard("Hearts","2"));
     }
   }
 
@@ -23,7 +24,6 @@ public class DeckOfCards {
   }
 
   public PokerCard dealOneCard() {
-    cards.remove(0);
-    return new PokerCard("Hearts","Ace");
+    return cards.remove(0);
   }
 }

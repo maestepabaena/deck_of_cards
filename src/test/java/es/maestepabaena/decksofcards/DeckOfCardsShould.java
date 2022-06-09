@@ -48,7 +48,7 @@ class DeckOfCardsShould {
     assertNotNull(firstCard);
     assertNotNull(secondCard);
     assertThat(deckOfCards.getCardsLeft(), is(50));
-    assertThat(firstCard).isEqualTo(secondCard);
+    assertThat(firstCard).isNotEqualTo(secondCard);
 
   }
 
