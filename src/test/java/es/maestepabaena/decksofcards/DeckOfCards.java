@@ -15,7 +15,12 @@ public class DeckOfCards {
     }
   }
 
+  /**
+   * Implement the simplest Shuffle technique: Riffle technique with only one card deal from the top So card from the
+   * top have 52 different possible where it can go. Back to the top, 2nd position ...or underneath the bottom card
+   */
   public void shuffle() {
+
 
   }
 
