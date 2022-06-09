@@ -18,6 +18,19 @@ class DeckOfCardsShould {
   }
 
   @Test
+  void return_52cards_inTheDefaultOrder() {
+    // then
+    for (Suit suit : Suit.values()) {
+      for (FaceValue faceValue : FaceValue.values()) {
+        PokerCard card=deckOfCards.dealOneCard();
+        assertThat(card.getSuit()).isEqualTo(suit);
+        assertThat(card.getFaceValue()).isEqualTo(faceValue);
+      }
+    }
+
+  }
+
+  @Test
   void return_deck_randomly_permuted_when_shuffle_isCalled() {
     // when
     deckOfCards.shuffle();

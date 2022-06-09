@@ -26,4 +26,12 @@ public class PokerCard {
   public int hashCode() {
     return Objects.hash(suit, faceValue);
   }
+
+  public Suit getSuit() {
+    return this.suit;
+  }
+
+  public FaceValue getFaceValue() {
+    return this.faceValue;
+  }
 }
