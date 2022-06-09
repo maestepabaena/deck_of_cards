@@ -1,5 +1,6 @@
 package es.maestepabaena.decksofcards;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -33,6 +34,21 @@ class DeckOfCardsShould {
 
     // then
     assertNotNull(card);
+    assertThat(deckOfCards.getCardsLeft(), is(51));
+
+  }
+
+  @Test
+  void return_twoDifferentCards_when_dealOneCardIsCalledTwice() {
+    // when
+    PokerCard firstCard = deckOfCards.dealOneCard();
+    PokerCard secondCard = deckOfCards.dealOneCard();
+
+    // then
+    assertNotNull(firstCard);
+    assertNotNull(secondCard);
+    assertThat(deckOfCards.getCardsLeft(), is(50));
+    assertThat(firstCard).isEqualTo(secondCard);
 
   }
 

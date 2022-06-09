@@ -5,10 +5,13 @@ import java.util.List;
 
 public class DeckOfCards {
 
-  List<String> cards;
+  List<PokerCard> cards;
 
   public DeckOfCards() {
     this.cards = new ArrayList<>();
+    for (int i=0; i<52; i++){
+      cards.add(new PokerCard("Hearts","Ace"));
+    }
   }
 
   public void shuffle() {
@@ -16,10 +19,11 @@ public class DeckOfCards {
   }
 
   public int getCardsLeft() {
-    return 52;
+    return cards.size();
   }
 
   public PokerCard dealOneCard() {
-    return new PokerCard();
+    cards.remove(0);
+    return new PokerCard("Hearts","Ace");
   }
 }
