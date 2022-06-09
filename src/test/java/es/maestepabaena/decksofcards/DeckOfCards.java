@@ -9,13 +9,16 @@ public class DeckOfCards {
 
   /**
    * Assumption 1.
-   * Default order of deck of cards is A->K of Hearts, A->K of Clubs, K->A of Diamonds, K->A of Spades
+   * Default order of deck of cards is A->K of Spades, A->K of Diamonds, A->K of Clubs , A->K of Hearts
    */
   public DeckOfCards() {
     this.cards = new ArrayList<>();
-    cards.add(new PokerCard(Suit.HEARTS, FaceValue.ACE));
-    for (int i = 1; i < 52; i++) {
-      cards.add(new PokerCard(Suit.HEARTS, FaceValue.TWO));
+
+    for (Suit suit : Suit.values()) {
+      for (FaceValue faceValue : FaceValue.values()) {
+        PokerCard pokerCard = new PokerCard(suit, faceValue);
+        cards.add(pokerCard);
+      }
     }
   }
 

@@ -26,8 +26,8 @@ Take your time and do it right!
 We will give here some assumptions for some aspect of the statement that have been left intentionally vague. Initially
 we will assume the most basic ways to accomplish the call
 
-1- Order of cards before do any shuffle (fresh deck when you buy it)?: We assume the order is A->K of Hearts, A->K of
-Clubs, K->A of Diamonds, K->A of Spades based on real case: https://ambitiouswithcards.com/new-deck-order/
+1- Order of cards before do any shuffle (fresh deck when you buy it)?: We assume the order is A->K of Spades, A->K of
+Diamonds, A->K of Clubs , A->K of Hearts
 
 2- How many cards are permuted randomly in each shuffle() call? There are exactly 52 factorial possible orderings of the
 cards (that is a lot!) . So we can conclude it's almost impossible to know (and test) how many cards has been changed

@@ -8,11 +8,12 @@ public class PokerCard {
   private FaceValue faceValue;
 
   public PokerCard(Suit suit, FaceValue faceValue) {
-    this.suit=suit;
-    this.faceValue=faceValue;
+    this.suit = suit;
+    this.faceValue = faceValue;
   }
 
-  @Override public boolean equals(Object o) {
+  @Override
+  public boolean equals(Object o) {
     if (this == o)
       return true;
     if (!(o instanceof PokerCard))
@@ -21,7 +22,8 @@ public class PokerCard {
     return suit == pokerCard.suit && faceValue == pokerCard.faceValue;
   }
 
-  @Override public int hashCode() {
+  @Override
+  public int hashCode() {
     return Objects.hash(suit, faceValue);
   }
 }
