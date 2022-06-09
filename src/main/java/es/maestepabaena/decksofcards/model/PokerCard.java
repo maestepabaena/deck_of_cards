@@ -1,4 +1,4 @@
-package es.maestepabaena.decksofcards;
+package es.maestepabaena.decksofcards.model;
 
 import java.util.Objects;
 

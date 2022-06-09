@@ -1,5 +1,9 @@
 package es.maestepabaena.decksofcards;
 
+import es.maestepabaena.decksofcards.model.FaceValue;
+import es.maestepabaena.decksofcards.model.PokerCard;
+import es.maestepabaena.decksofcards.model.Suit;
+
 import java.util.ArrayList;
 import java.util.List;
 

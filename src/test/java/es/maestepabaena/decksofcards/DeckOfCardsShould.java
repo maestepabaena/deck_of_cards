@@ -5,6 +5,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import es.maestepabaena.decksofcards.model.FaceValue;
+import es.maestepabaena.decksofcards.model.PokerCard;
+import es.maestepabaena.decksofcards.model.Suit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
