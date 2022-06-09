@@ -2,17 +2,22 @@ package es.maestepabaena.decksofcards;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class DeckOfCardsShould {
 
-  @Test
-  public void return_deck_randomly_permuted_when_shuffle_isCalled() {
-    // given
-    DeckOfCards deckOfCards = new DeckOfCards();
+  private DeckOfCards deckOfCards;
 
+  @BeforeEach
+  void setUp() {
+    deckOfCards = new DeckOfCards();
+  }
+
+  @Test
+  void return_deck_randomly_permuted_when_shuffle_isCalled() {
     // when
     deckOfCards.shuffle();
 
@@ -22,10 +27,7 @@ class DeckOfCardsShould {
   }
 
   @Test
-  public void return_oneCard_when_dealOneCard() {
-    // given
-    DeckOfCards deckOfCards = new DeckOfCards();
-
+  void return_oneCard_when_dealOneCard() {
     // when
     PokerCard card = deckOfCards.dealOneCard();
 
