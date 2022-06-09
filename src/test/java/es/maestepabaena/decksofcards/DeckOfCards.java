@@ -18,4 +18,8 @@ public class DeckOfCards {
   public int getCardsLeft() {
     return 52;
   }
+
+  public PokerCard dealOneCard() {
+    return new PokerCard();
+  }
 }
