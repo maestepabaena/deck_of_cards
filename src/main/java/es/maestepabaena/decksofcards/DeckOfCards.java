@@ -6,6 +6,7 @@ import es.maestepabaena.decksofcards.model.Suit;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class DeckOfCards {
 
@@ -31,7 +32,12 @@ public class DeckOfCards {
    * top have 52 different possible where it can go. Back to the top, 2nd position ...or underneath the bottom card
    */
   public void shuffle() {
+    PokerCard card=cards.remove(0);
+    cards.add(randomNumberFrom0to52(),card);
+  }
 
+  private int randomNumberFrom0to52() {
+    return ThreadLocalRandom.current().nextInt(0, 52);
   }
 
   public PokerCard dealOneCard() {
