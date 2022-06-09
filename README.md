@@ -34,8 +34,8 @@ cards (that is a lot!) . So we can conclude it's almost impossible to know (and 
 from their initial position in the deck if we do a perfect random shuffle. But there are also different shuffle
 techniques based on
 https://en.wikipedia.org/wiki/Shuffling. Depends on the shuffle technique we could do some probabilist predictions about
-randomness level of the deck. So for this exercise we will assume to always do the simplest shuffle possible (take the top card off and put in
-a random order, it's like riffle shuffle with one card) and only once.
+randomness level of the deck. So for this exercise we will assume to always do the simplest shuffle possible (take the
+top card off and put in a random order, it's like riffle shuffle with one card) and only once.
 
 3- How many times we do a shuffle in a game. We will assume we always shuffle at the beginning (fresh deck in a default
 order) and then we can deal a card from the top until we don't have more cards (we will not shuffle with less than 52

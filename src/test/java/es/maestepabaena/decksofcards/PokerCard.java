@@ -3,11 +3,12 @@ package es.maestepabaena.decksofcards;
 import java.util.Objects;
 
 public class PokerCard {
-  private String suit;
-  private String faceValue;
 
-  public PokerCard(String suit,String faceValue) {
-    this.suit = suit;
+  private Suit suit;
+  private FaceValue faceValue;
+
+  public PokerCard(Suit suit, FaceValue faceValue) {
+    this.suit=suit;
     this.faceValue=faceValue;
   }
 
@@ -17,7 +18,7 @@ public class PokerCard {
     if (!(o instanceof PokerCard))
       return false;
     PokerCard pokerCard = (PokerCard) o;
-    return suit.equals(pokerCard.suit) && faceValue.equals(pokerCard.faceValue);
+    return suit == pokerCard.suit && faceValue == pokerCard.faceValue;
   }
 
   @Override public int hashCode() {
