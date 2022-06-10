@@ -24,7 +24,7 @@ Take your time and do it right!
 # Assumptions
 
 We will give here some assumptions for some aspect of the statement that have been left intentionally vague. Initially
-we will assume the most basic ways to accomplish the call
+we will assume the most basic ways to accomplish the calls
 
 1- Order of cards before do any shuffle (fresh deck when you buy it)?: We assume the order is A->K of Spades, A->K of
 Diamonds, A->K of Clubs , A->K of Hearts

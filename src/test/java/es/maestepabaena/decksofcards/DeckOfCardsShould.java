@@ -3,13 +3,21 @@ package es.maestepabaena.decksofcards;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import es.maestepabaena.decksofcards.model.FaceValue;
 import es.maestepabaena.decksofcards.model.PokerCard;
 import es.maestepabaena.decksofcards.model.Suit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 class DeckOfCardsShould {
 
@@ -65,6 +73,46 @@ class DeckOfCardsShould {
     assertNotNull(secondCard);
     assertThat(deckOfCards.getCards().size(), is(50));
     assertThat(firstCard).isNotEqualTo(secondCard);
+
+  }
+
+  @Test
+  void return_differentCards_when_dealOneCardIsCalled52Times() {
+    // given
+    List<PokerCard> callerCards= new ArrayList<>();
+
+    // when
+    for (int i=0; i < 52 ; i++) {
+      callerCards.add(deckOfCards.dealOneCard());
+    }
+
+    // then
+    Set<PokerCard> duplicatesCards = findDuplicateByFrequency(callerCards);
+    assertThat(duplicatesCards.size()).isEqualTo(0);
+    assertThat(callerCards.size()).isEqualTo(52);
+  }
+
+  private Set<PokerCard> findDuplicateByFrequency(List<PokerCard> callerCards) {
+    return callerCards.stream().filter(i -> Collections.frequency(callerCards, i) > 1)
+        .collect(Collectors.toSet());
+  }
+
+  @Test
+  void return_exception_when_dealOneCardIsCalled53Times() {
+    // given
+    List<PokerCard> callerCards= new ArrayList<>();
+    Exception exception = assertThrows(IllegalCallerException.class, () -> {
+      // when
+      for (int i=0; i < 53 ; i++) {
+        callerCards.add(deckOfCards.dealOneCard());
+      }
+    });
+
+    String expectedMessage = "Deck has no cards";
+    String actualMessage = exception.getMessage();
+
+    assertThat(actualMessage).contains(expectedMessage);
+    // then
 
   }
 

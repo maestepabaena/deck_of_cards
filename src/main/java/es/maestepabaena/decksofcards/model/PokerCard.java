@@ -34,4 +34,8 @@ public class PokerCard {
   public FaceValue getFaceValue() {
     return this.faceValue;
   }
+
+  @Override public String toString() {
+    return "PokerCard{" + "suit=" + suit + ", faceValue=" + faceValue + '}';
+  }
 }
