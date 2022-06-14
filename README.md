@@ -31,13 +31,22 @@ Diamonds, A->K of Clubs , A->K of Hearts
 
 2- How many cards are permuted randomly in each shuffle() call? There are exactly 52 factorial possible orderings of the
 cards (that is a lot!) . So we can conclude it's almost impossible to know (and test) how many cards has been changed
-from their initial position in the deck if we do a perfect random shuffle. But there are also different shuffle
-techniques based on
+from their initial position in the deck. But there are also different shuffle techniques based on
 https://en.wikipedia.org/wiki/Shuffling. Depends on the shuffle technique we could do some probabilist predictions about
 randomness level of the deck. So for this exercise we will assume to always do the simplest shuffle possible (take the
-top card off and put in a random order, it's like riffle shuffle with one card) and only once.
+top card off and put in a random order, it's like riffle shuffle with one card ).
 
 3- How many times we do a shuffle in a game. We will assume we always shuffle at the beginning (fresh deck in a default
 order) and then we can deal a card from the top until we don't have more cards (we will not shuffle with less than 52
-cards in the decks)
+cards in the deck)
 
+# Improvements
+
+1- For future improvement, we can abstract the shuffle call (interface) and provide several implementations based on the
+shuffling techniques (strategy design pattern). Also leave DeckOfCards abstract to use different kind of cards (Poker
+type with Jolly, spanish deck of cards... )
+
+2- If we assume we only can deal one card from the top of the deck, we could start thinking to improve the performance
+using a LinkedList instead of ArrayList. 
+   - For dealOneCard it would be O(1) better than ArrayList
+   - For shuffle (removeLast and add(int index)) it would be O(1)+O(n) in worst case scenario (similar than ArrayList). 
