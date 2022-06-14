@@ -43,7 +43,7 @@ public class DeckOfCards {
     try {
       return cards.remove(0);
     } catch (IndexOutOfBoundsException e) {
-      throw new IllegalCallerException("Deck has no cards", e);
+      return null;
     }
   }
 

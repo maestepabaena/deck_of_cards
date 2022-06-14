@@ -3,21 +3,20 @@ package es.maestepabaena.decksofcards;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
-import es.maestepabaena.decksofcards.model.FaceValue;
-import es.maestepabaena.decksofcards.model.PokerCard;
-import es.maestepabaena.decksofcards.model.Suit;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import es.maestepabaena.decksofcards.model.FaceValue;
+import es.maestepabaena.decksofcards.model.PokerCard;
+import es.maestepabaena.decksofcards.model.Suit;
 
 class DeckOfCardsShould {
 
@@ -33,7 +32,7 @@ class DeckOfCardsShould {
     // then
     for (Suit suit : Suit.values()) {
       for (FaceValue faceValue : FaceValue.values()) {
-        PokerCard card=deckOfCards.dealOneCard();
+        PokerCard card = deckOfCards.dealOneCard();
         assertThat(card.getSuit()).isEqualTo(suit);
         assertThat(card.getFaceValue()).isEqualTo(faceValue);
       }
@@ -79,10 +78,10 @@ class DeckOfCardsShould {
   @Test
   void return_differentCards_when_dealOneCardIsCalled52Times() {
     // given
-    List<PokerCard> callerCards= new ArrayList<>();
+    List<PokerCard> callerCards = new ArrayList<>();
 
     // when
-    for (int i=0; i < 52 ; i++) {
+    for (int i = 0; i < 52; i++) {
       callerCards.add(deckOfCards.dealOneCard());
     }
 
@@ -93,27 +92,19 @@ class DeckOfCardsShould {
   }
 
   private Set<PokerCard> findDuplicateByFrequency(List<PokerCard> callerCards) {
-    return callerCards.stream().filter(i -> Collections.frequency(callerCards, i) > 1)
-        .collect(Collectors.toSet());
+    return callerCards.stream().filter(i -> Collections.frequency(callerCards, i) > 1).collect(Collectors.toSet());
   }
 
   @Test
-  void return_exception_when_dealOneCardIsCalled53Times() {
-    // given
-    List<PokerCard> callerCards= new ArrayList<>();
-    Exception exception = assertThrows(IllegalCallerException.class, () -> {
-      // when
-      for (int i=0; i < 53 ; i++) {
-        callerCards.add(deckOfCards.dealOneCard());
-      }
-    });
+  void return_null_when_dealOneCardIsCalled53Times() {
+    // when
+    for (int i = 0; i < 52; i++) {
+      deckOfCards.dealOneCard();
+    }
+    PokerCard card53th = deckOfCards.dealOneCard();
 
-    String expectedMessage = "Deck has no cards";
-    String actualMessage = exception.getMessage();
-
-    assertThat(actualMessage).contains(expectedMessage);
     // then
-
+    assertThat(card53th).isNull();
   }
 
 }
