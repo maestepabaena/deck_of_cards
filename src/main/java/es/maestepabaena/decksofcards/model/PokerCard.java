@@ -1,15 +1,17 @@
 package es.maestepabaena.decksofcards.model;
 
+import es.maestepabaena.decksofcards.Card;
+
 import java.util.Objects;
 
-public class PokerCard {
+public class PokerCard implements Card {
 
-  private Suit suit;
-  private FaceValue faceValue;
+  private Suit pokerSuit;
+  private FaceValue pokerFaceValue;
 
-  public PokerCard(Suit suit, FaceValue faceValue) {
-    this.suit = suit;
-    this.faceValue = faceValue;
+  public PokerCard(PokerSuit pokerSuit, PokerFaceValue pokerFaceValue) {
+    this.pokerSuit = pokerSuit;
+    this.pokerFaceValue = pokerFaceValue;
   }
 
   @Override
@@ -19,23 +21,24 @@ public class PokerCard {
     if (!(o instanceof PokerCard))
       return false;
     PokerCard pokerCard = (PokerCard) o;
-    return suit == pokerCard.suit && faceValue == pokerCard.faceValue;
+    return pokerSuit == pokerCard.pokerSuit && pokerFaceValue == pokerCard.pokerFaceValue;
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(suit, faceValue);
+    return Objects.hash(pokerSuit, pokerFaceValue);
   }
 
+  @Override
   public Suit getSuit() {
-    return this.suit;
+    return this.pokerSuit;
   }
-
+  @Override
   public FaceValue getFaceValue() {
-    return this.faceValue;
+    return this.pokerFaceValue;
   }
 
   @Override public String toString() {
-    return "PokerCard{" + "suit=" + suit + ", faceValue=" + faceValue + '}';
+    return "PokerCard{" + "pokerSuit=" + pokerSuit + ", pokerFaceValue=" + pokerFaceValue + '}';
   }
 }

@@ -11,39 +11,38 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import es.maestepabaena.decksofcards.model.PokerFaceValue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import es.maestepabaena.decksofcards.model.FaceValue;
 import es.maestepabaena.decksofcards.model.PokerCard;
-import es.maestepabaena.decksofcards.model.Suit;
+import es.maestepabaena.decksofcards.model.PokerSuit;
 
 class DeckOfCardsShould {
 
-  private DeckOfCards deckOfCards;
+  private PokerDeckOfCards deckOfCards;
 
   @BeforeEach
   void setUp() {
-    deckOfCards = new DeckOfCards();
+    deckOfCards = new PokerDeckOfCards();
   }
 
   @Test
   void return_52cards_inTheDefaultOrder() {
     // then
-    for (Suit suit : Suit.values()) {
-      for (FaceValue faceValue : FaceValue.values()) {
-        PokerCard card = deckOfCards.dealOneCard();
+    for (PokerSuit suit : PokerSuit.values()) {
+      for (PokerFaceValue faceValue : PokerFaceValue.values()) {
+        Card card = deckOfCards.dealOneCard();
         assertThat(card.getSuit()).isEqualTo(suit);
         assertThat(card.getFaceValue()).isEqualTo(faceValue);
       }
     }
-
   }
 
   @Test
   void return_deck_randomly_permuted_when_shuffle_isCalled() {
     //given
-    DeckOfCards brandNewDeck= new DeckOfCards();
+    PokerDeckOfCards brandNewDeck= new PokerDeckOfCards();
 
     // when
     deckOfCards.shuffle();
@@ -57,7 +56,7 @@ class DeckOfCardsShould {
   @Test
   void return_oneCard_when_dealOneCard() {
     // when
-    PokerCard card = deckOfCards.dealOneCard();
+    Card card = deckOfCards.dealOneCard();
 
     // then
     assertNotNull(card);
@@ -68,8 +67,8 @@ class DeckOfCardsShould {
   @Test
   void return_twoDifferentCards_when_dealOneCardIsCalledTwice() {
     // when
-    PokerCard firstCard = deckOfCards.dealOneCard();
-    PokerCard secondCard = deckOfCards.dealOneCard();
+    Card firstCard = deckOfCards.dealOneCard();
+    Card secondCard = deckOfCards.dealOneCard();
 
     // then
     assertNotNull(firstCard);
@@ -82,7 +81,7 @@ class DeckOfCardsShould {
   @Test
   void return_differentCards_when_dealOneCardIsCalled52Times() {
     // given
-    List<PokerCard> callerCards = new ArrayList<>();
+    List<Card> callerCards = new ArrayList<>();
 
     // when
     for (int i = 0; i < 52; i++) {
@@ -90,13 +89,9 @@ class DeckOfCardsShould {
     }
 
     // then
-    Set<PokerCard> duplicatesCards = findDuplicateByFrequency(callerCards);
+    Set<Card> duplicatesCards = findDuplicateByFrequency(callerCards);
     assertThat(duplicatesCards.size()).isZero();
     assertThat(callerCards.size()).isEqualTo(52);
-  }
-
-  private Set<PokerCard> findDuplicateByFrequency(List<PokerCard> callerCards) {
-    return callerCards.stream().filter(i -> Collections.frequency(callerCards, i) > 1).collect(Collectors.toSet());
   }
 
   @Test
@@ -105,10 +100,14 @@ class DeckOfCardsShould {
     for (int i = 0; i < 52; i++) {
       deckOfCards.dealOneCard();
     }
-    PokerCard card53th = deckOfCards.dealOneCard();
+    Card card53th = deckOfCards.dealOneCard();
 
     // then
     assertThat(card53th).isNull();
+  }
+
+  private Set<Card> findDuplicateByFrequency(List<Card> callerCards) {
+    return callerCards.stream().filter(i -> Collections.frequency(callerCards, i) > 1).collect(Collectors.toSet());
   }
 
 }
