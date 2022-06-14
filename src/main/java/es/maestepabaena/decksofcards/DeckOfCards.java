@@ -1,6 +1,7 @@
 package es.maestepabaena.decksofcards;
 
 import java.util.List;
+import java.util.Stack;
 
 public interface DeckOfCards {
 
@@ -8,6 +9,6 @@ public interface DeckOfCards {
 
   Card dealOneCard();
 
-  List<Card> getCards();
+  Stack<Card> getCards();
 
 }

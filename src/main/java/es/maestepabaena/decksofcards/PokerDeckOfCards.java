@@ -1,7 +1,7 @@
 package es.maestepabaena.decksofcards;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.EmptyStackException;
+import java.util.Stack;
 
 import es.maestepabaena.decksofcards.model.PokerCard;
 import es.maestepabaena.decksofcards.model.PokerFaceValue;
@@ -9,18 +9,18 @@ import es.maestepabaena.decksofcards.model.PokerSuit;
 
 public class PokerDeckOfCards implements DeckOfCards {
 
-  List<Card> cards;
+  Stack<Card> cards;
 
   /**
    * Assumption 1. Default order of deck of cards is A->K of Spades, A->K of Diamonds, A->K of Clubs , A->K of Hearts
    */
   public PokerDeckOfCards() {
-    this.cards = new ArrayList<>();
+    this.cards = new Stack<>();
 
     for (PokerSuit pokerSuit : PokerSuit.values()) {
       for (PokerFaceValue pokerFaceValue : PokerFaceValue.values()) {
         PokerCard pokerCard = new PokerCard(pokerSuit, pokerFaceValue);
-        cards.add(pokerCard);
+        cards.push(pokerCard);
       }
     }
   }
@@ -37,13 +37,13 @@ public class PokerDeckOfCards implements DeckOfCards {
   @Override
   public Card dealOneCard() {
     try {
-      return cards.remove(0);
-    } catch (IndexOutOfBoundsException e) {
+      return cards.pop();
+    } catch (EmptyStackException e) {
       return null;
     }
   }
 
-  public List<Card> getCards() {
+  public Stack<Card> getCards() {
     return cards;
   }
 }

@@ -29,8 +29,12 @@ class DeckOfCardsShould {
   @Test
   void return_52cards_inTheDefaultOrder() {
     // then
-    for (PokerSuit suit : PokerSuit.values()) {
-      for (PokerFaceValue faceValue : PokerFaceValue.values()) {
+    PokerSuit[] values = PokerSuit.values();
+    for (int i = values.length-1; i >=0; --i) {
+      PokerSuit suit = values[i];
+      PokerFaceValue[] pokerFaceValues = PokerFaceValue.values();
+      for (int j = pokerFaceValues.length-1; j >=0; --j) {
+        PokerFaceValue faceValue = pokerFaceValues[j];
         Card card = deckOfCards.dealOneCard();
         assertThat(card.getSuit()).isEqualTo(suit);
         assertThat(card.getFaceValue()).isEqualTo(faceValue);
