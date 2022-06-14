@@ -4,10 +4,10 @@ import java.util.List;
 
 public interface DeckOfCards {
 
-        void shuffle();
+  void shuffle();
 
-        Card dealOneCard();
+  Card dealOneCard();
 
-        List<Card> getCards();
+  List<Card> getCards();
 
 }

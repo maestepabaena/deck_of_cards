@@ -11,11 +11,10 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import es.maestepabaena.decksofcards.model.PokerFaceValue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import es.maestepabaena.decksofcards.model.PokerCard;
+import es.maestepabaena.decksofcards.model.PokerFaceValue;
 import es.maestepabaena.decksofcards.model.PokerSuit;
 
 class DeckOfCardsShould {
@@ -41,8 +40,8 @@ class DeckOfCardsShould {
 
   @Test
   void return_deck_randomly_permuted_when_shuffle_isCalled() {
-    //given
-    PokerDeckOfCards brandNewDeck= new PokerDeckOfCards();
+    // given
+    PokerDeckOfCards brandNewDeck = new PokerDeckOfCards();
 
     // when
     deckOfCards.shuffle();

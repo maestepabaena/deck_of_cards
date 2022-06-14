@@ -2,10 +2,9 @@ package es.maestepabaena.decksofcards;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 
-import es.maestepabaena.decksofcards.model.PokerFaceValue;
 import es.maestepabaena.decksofcards.model.PokerCard;
+import es.maestepabaena.decksofcards.model.PokerFaceValue;
 import es.maestepabaena.decksofcards.model.PokerSuit;
 
 public class PokerDeckOfCards implements DeckOfCards {
@@ -31,12 +30,8 @@ public class PokerDeckOfCards implements DeckOfCards {
    * top have 52 different possible where it can go. Back to the top, 2nd position ...or underneath the bottom card
    */
   public void shuffle() {
-    Card card = cards.remove(0);
-    cards.add(randomNumberFrom0to52(), card);
-  }
-
-  private int randomNumberFrom0to52() {
-    return ThreadLocalRandom.current().nextInt(0, 52);
+    ShuffleMethod shuffleMethod = new ShuffleMethod();
+    shuffleMethod.performShuffle(ShuffleStrategy.SIMPLE_RIFFLE_SHUFFLE, this);
   }
 
   @Override
