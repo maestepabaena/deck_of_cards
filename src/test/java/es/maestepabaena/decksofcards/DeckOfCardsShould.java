@@ -42,11 +42,15 @@ class DeckOfCardsShould {
 
   @Test
   void return_deck_randomly_permuted_when_shuffle_isCalled() {
+    //given
+    DeckOfCards brandNewDeck= new DeckOfCards();
+
     // when
     deckOfCards.shuffle();
 
     // then
     assertThat(deckOfCards.getCards().size(), is(52));
+    assertThat(deckOfCards.getCards()).isNotEqualTo(brandNewDeck.getCards());
 
   }
 
@@ -87,7 +91,7 @@ class DeckOfCardsShould {
 
     // then
     Set<PokerCard> duplicatesCards = findDuplicateByFrequency(callerCards);
-    assertThat(duplicatesCards.size()).isEqualTo(0);
+    assertThat(duplicatesCards.size()).isZero();
     assertThat(callerCards.size()).isEqualTo(52);
   }
 
